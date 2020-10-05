@@ -30,7 +30,7 @@ public class AuthController {
 						@ApiResponse(code = 400, message = "Something went wrong"), 
 						@ApiResponse(code = 422, message = "Invalid username/password")
 						})
-	public String authenticate(@ApiParam("Authenticate User") @RequestBody UserDataDTO user) {
+	public String authenticate(@ApiParam("Authenticate User") @RequestBody UserDataDTO user)  {
 		System.out.println("user ::: "+user.toString());
 		return userService.authenticate(user.getUsername(), user.getPassword());
 	}

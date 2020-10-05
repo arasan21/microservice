@@ -10,9 +10,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
-@Entity(name = "TBL_USERS")
+@Entity
+@Table(name = "TBL_USERS")
 public class User {
 	
 
@@ -41,6 +44,7 @@ public class User {
 	  @Column(name = "updated_at",  nullable = false)
 	  private Date updatedAt;
 
+	  @Transient
 	  @ElementCollection(fetch = FetchType.EAGER)
 	  List<Role> roles;
 
@@ -108,4 +112,9 @@ public class User {
 		this.roles = roles;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", name=" + name + ", email=" + email + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", roles=" + roles + "]";
+	}
+	
 }
