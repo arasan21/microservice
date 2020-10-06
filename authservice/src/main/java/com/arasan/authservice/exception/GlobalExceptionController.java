@@ -1,7 +1,5 @@
 package com.arasan.authservice.exception;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
@@ -10,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -39,6 +38,15 @@ public class GlobalExceptionController extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleResourceNotFoundException(
 			ResourceNotFoundException ex) {
 		logger.error("Resource Not Found :",ex.getMessage());
+       ApiError apiError = new ApiError(HttpStatus.NOT_FOUND);
+       apiError.setMessage(ex.getMessage());
+       return buildResponseEntity(apiError);
+	}
+	
+	@ExceptionHandler(UsernameNotFoundException.class)
+	protected ResponseEntity<Object> handleUsernameNotFoundException(
+			UsernameNotFoundException ex) {
+		logger.error("Username Not Found  :",ex.getMessage());
        ApiError apiError = new ApiError(HttpStatus.NOT_FOUND);
        apiError.setMessage(ex.getMessage());
        return buildResponseEntity(apiError);

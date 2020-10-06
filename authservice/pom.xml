@@ -39,17 +39,17 @@
 		    <groupId>javax.validation</groupId>
 		    <artifactId>validation-api</artifactId>
 		</dependency>
-		<!-- <dependency>
-			Starter for using Spring Security
+		<dependency>
+			<!-- Starter for using Spring Security -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
-			Make method based security testing easier
+			<!-- Make method based security testing easier -->
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency> -->
+		</dependency>
 		<dependency>
 			<!-- Automatically restart whenever files on the classpath change -->
 			<groupId>org.springframework.boot</groupId>
